@@ -115,11 +115,11 @@ angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
 
     }
 ])
-.controller('listarTodosCtrl', ['$scope', '$stateParams', '$http', '$timeout','$ionicLoading', 'growl',
+.controller('listarTodosCtrl', ['$scope', '$stateParams', '$http', '$timeout','$ionicLoading', 'growl', '$ionicListDelegate',
     // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, $http, $timeout, $ionicLoading, $growl) {
+    function($scope, $stateParams, $http, $timeout, $ionicLoading, $growl, $ionicListDelegate) {
 
         $scope.todos = [];
         $scope.listartodos = function() {
@@ -215,11 +215,13 @@ angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
                 })
                 .success(function(data) {
                   $ionicLoading.hide(),    
-                  $growl.success("<b>Notificación</b> eliminada"),   
+                  $growl.success("<b>Notificación</b> eliminada"), 
+                  $ionicListDelegate.closeOptionButtons(),  
                   $scope.refrescar();
                 })
                 .error(function(data, error, status, headers, config) {
                     $ionicLoading.hide(),
+                    $ionicListDelegate.closeOptionButtons();
                     $growl.error("Error de conoexión");  
                 });
         }
@@ -227,11 +229,11 @@ angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
     }
 ])
 
-.controller('fullordenesCtrl', ['$scope', '$stateParams', '$cordovaBarcodeScanner', '$http', '$timeout', '$state','shareData','$ionicLoading', 'growl', 
+.controller('fullordenesCtrl', ['$scope', '$stateParams', '$cordovaBarcodeScanner', '$http', '$timeout', '$state','shareData','$ionicLoading', 'growl', '$ionicListDelegate',
     // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, $cordovaBarcodeScanner, $http, $timeout, $state,shareData, $ionicLoading, $growl, $cordovaKeyboard) {
+    function($scope, $stateParams, $cordovaBarcodeScanner, $http, $timeout, $state,shareData, $ionicLoading, $growl, $cordovaKeyboard, $ionicListDelegate) {
 
         $scope.verIngresados = function() {
             $state.go("listarTodos");
@@ -252,7 +254,7 @@ angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
             }, false);
         }
 
-        $scope.reenviar = function(aufnr,vornr,aplfl,icono) {
+        $scope.reenviar = function(aufnr,vornr,aplfl,icono,resultado,inx) {
             var usu = $scope.usuario;
             var ord = aufnr;
             var ope = vornr;
@@ -287,17 +289,21 @@ angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
                 })
                 .success(function(data) {       
                   $ionicLoading.hide(),    
-                  icono = "icon ion-paper-airplane",
+                  // $ionicListDelegate.closeOptionButtons(),
+                  $scope.nuevos[inx].Resultado = "Enviada",
+                  $scope.nuevos[inx].Icon      = "icon ion-paper-airplane",
                   $growl.success("<b>Notificación</b> enviada"); 
-                  $scope.refrescar();           
+                   $ionicListDelegate.closeOptionButtons();
                   return data;
                 })
                 .error(function(data, error, status, headers, config) {
-                  return data,
+                  
                   $ionicLoading.hide(),  
                   icono = "icon ion-close-circled",
+                  // $ionicListDelegate.closeOptionButtons(),
                   $growl.error("Error de conexión");  
-
+                   $ionicListDelegate.closeOptionButtons();
+                   return data;
                 });
         }        
 
@@ -313,7 +319,7 @@ angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
             var isIOS                  = ionic.Platform.isIOS();   
             var isAndroid              = ionic.Platform.isAndroid();  
             if (isIOS || isAndroid) {
-                    lv_init = "http://181.15.198.242:9524/sap/opu/odata/sap/ZMB_ORDEN_SRV/zmb_notificacionSet";
+                    lv_init = "hattp://181.15.198.242:9524/sap/opu/odata/sap/ZMB_ORDEN_SRV/zmb_notificacionSet";
             } else{
                     lv_init = "/proxy/ZMB_ORDEN_SRV/zmb_notificacionSet";
                    }               
@@ -349,7 +355,7 @@ angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
                             Vornr: ope,
                             Aplfl: sec,
                             Icon:  "icon ion-paper-airplane",
-                            Resultado:  "Enviado",
+                            Resultado:  "Enviada",
                   });        
                   $ionicLoading.hide(),    
                   $growl.success("<b>Notificación</b> enviada");            
