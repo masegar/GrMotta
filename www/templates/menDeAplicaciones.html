@@ -1,0 +1,51 @@
+<ion-view title="Menú de Aplicaciones" id="page3" style="background-color:#034B3D;" hide-nav-bar="true" class="menu-background">
+<ion-content padding="true" class="has-header">
+<!--  -->
+
+<!--  -->
+    
+    <div class="spacer" style="width: 300px; height: 108px;"></div>
+<!--     <div>
+            <img src="img/fondoMenu.png" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+    </div>     -->
+
+    <button id="menDeAplicaciones-button8" 
+            style="border-radius:-50px -50px -50px -50px;" 
+            ng-click="irOrdenes()"
+            class="button button-light  button-block button-outline icon-left ion-camera">Ingreso Órdenes de producción</button>
+<!--     <button id="menDeAplicaciones-button8" 
+            ng-click="irOrdenes()"
+            class="button"
+            >Órdenes de producción</button>      
+     <button id="menDeAplicaciones-button9" 
+            ng-click="irOrdenes()"
+            class="button">Nueva Aplicación 1</button>
+    <button id="menDeAplicaciones-button10" 
+            class="button">Nueva Aplicación 2</button>
+    <button id="menDeAplicaciones-button10" 
+            class="button">Nueva Aplicación 3</button>   -->          
+    <button id="menDeAplicaciones-button9" 
+            ng-click="irOrdenes()"
+            class="button button-light  button-block button-outline icon-left ion-android-car">Despacho de mercaderia</button>
+            <div style="text-align: center;"><img ng-src="https://maps.googleapis.com/maps/api/staticmap?center=-34.5310136,-58.4801285&zoom=16&size={{dev_width}}x150&maptype=roadmap&markers=-34.5310136,-58.4801285
+&key=AIzaSyC1YLbGt2lAvgW_2NTZ1YT0PJ5TJDcGWyU"></div>
+    <button id="menDeAplicaciones-button10" 
+            ng-click="irWeb()"
+            class="button button-light  button-block button-outline 
+            icon-left ion-android-mail">Acerca de Motta</button>
+<!--     <div class="spacer" style="height: 50px;"></div> -->
+
+<!--     <div style="margin-right:-20px;">
+      <button id="menDeAplicaciones-button14"
+              ng-click="irLogOut()"
+              style="left:-10px;" 
+              class="button button-light  button-full icon-left ion-log-out">Log Out</button>
+    </div> -->
+  </ion-content>
+<div class="tabs tabs-icon-top">
+  <a class="tab-item" ng-click="irLogOut()">
+    <i class="icon ion-log-out"></i>
+    LOGOUT
+  </a>
+</div>  
+</ion-view>

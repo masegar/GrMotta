@@ -1,0 +1,58 @@
+<ion-view title="Ordenes Ingresadas" 
+		  id="page6" 
+		  style="background-color:#034B3D;">
+  <ion-content padding="true" class="has-header">
+    <form id="listarTodos-form4" class="list">
+      <label class="item item-input" id="listarTodos-search1" name="Buscador">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" 
+               placeholder="Buscar"
+               ng-model = "busco">
+      </label>
+    </form>
+
+
+  
+  <ion-refresher pulling-text = "Actualizando..." 
+                 on-refresh = "refrescar()">
+  </ion-refresher>
+  <!--  -->    
+    <ion-list ng-controller="listarTodosCtrl"> 
+      <!-- <ion-item ng-repeat="todo in todos | filter:busco track by $index"  -->
+      <ion-item ng-repeat="todo in todos.d.results | filter:busco" 
+                class= "item item-icon-right"
+                ng-click="clicker(todo)">
+             <p><strong>Orden:</strong> {{todo.Aufnr}}</p>  
+             <p><strong>Operación:</strong> {{todo.Vornr}}</p>  
+             <p><strong>Secuencia:</strong> {{todo.Aplfl}}</p>  
+             <p><strong>Resultado:</strong> {{todo.Mensaje}}</p> 
+
+            <div ng-if="todo.Estado == 'E'"> 
+               <i class= "icon ion-close-circled custom-red"></i>
+            </div>
+            <div ng-if="todo.Estado == 'S'"> 
+              <i class= "icon ion-checkmark-circled custom-green"></i>
+            </div>
+          <ion-option-button class="button-assertive ion-trash-a" 
+                             ng-click="eliminar(todo.Aufnr,todo.Vornr,todo.Aplfl,
+                             todo.Rueck,todo.Rmzhl)">Eliminar
+          </ion-option-button>    
+<!--           <ion-option-button class="button-positive ion-paper-airplane"
+                             ng-click="reenviar(todo.Aufnr,todo.Vornr,todo.Aplfl,
+                             todo.Rueck,todo.Rmzhl)">Reenviar
+          </ion-option-button>   -->            
+      </ion-item>
+    </ion-list>      
+    <div growl ></div>   
+  <!--  -->    
+  </ion-content> 
+  <!--  -->
+<!-- <ion-footer-bar class="item-input-inset bar-stable">
+    <label class="item-input-wrapper">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="search" placeholder="Buscar..." ng-model = "busco">
+  </label>
+</ion-footer-bar> -->
+
+  <!--  -->
+</ion-view>

@@ -1,0 +1,47 @@
+<ion-view title="Ingreso" id="page1" style="background-color:#034B3D;"          hide-nav-bar="true">
+    <ion-content padding="true" class="has-header" >
+        <div class="spacer" style="width: 300px; height: 20px;"></div>
+        <div>
+            <img src="img/JuDzU1QHSwKXvvPMyAYP_logo_Gmotta.jpg" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+        </div>
+<!--         <div class="spacer" style="width: 300px; height: 80px;"></div> -->
+        <form id="ingreso-form1" class="list"
+              name="miFormulario" novalidate>
+            <label class="item item-input" id="ingreso-input1">
+<!-- Datos de usuario             -->
+                <span class="input-label">Usuario</span>
+                <input type="text" 
+                       placeholder="" 
+                       name="usuario" 
+                       ng-model="usuario" 
+                       required>
+            </label>
+            <!-- <div growl ></div> -->
+            <label class="item item-input" id="ingreso-input2">
+<!-- Datos de contraseña             -->
+                <span class="input-label">Contraseña</span>
+                <input type="password"
+                       placeholder=""
+                       name="contrasenia"
+                       ng-model="contrasenia"
+                       required>
+            </label>    
+<!--             <div class="spacer" style="height: 150px;"></div> -->
+                <!-- Datos de Boton -->
+            <div style="margin-right:-20px;">
+                <button id="ingreso-button1"
+                        ng-disabled="miFormulario.$invalid"
+                        ng-click="login(usuario, contrasenia)"
+                        style="left:-10px;color:#024444;border-radius:0px 0px 0px 0px;"
+                        class="button button-light button-large button-full icon-left ion-log-in"
+                        >Login</button>
+            </div> 
+<!--         Aca muestro el mensaje de que no cargo los campos    -->  
+<!--         <div class="padding">
+            <p ng-show="miFormulario.usuario.$error.required">* Usuario Obligatorio.</p>
+            <p ng-show="miFormulario.contrasenia.$error.required">* Contraseña Obligatoria.</p>
+        </div>      -->       
+        </form>
+        <div growl ></div>
+    </ion-content>
+</ion-view>

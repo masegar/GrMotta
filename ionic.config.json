@@ -1,0 +1,10 @@
+{
+  "name": "grmotta",
+  "app_id": "edfad6b8",
+  "proxies": [
+    {
+      "path": "/proxy",
+      "proxyUrl": "http://181.15.198.242:9524/sap/opu/odata/sap"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+<ion-view title="Ingresar Ordenes" id="page7" style="background-color:#034B3D;">
+<ion-content padding="true" class="has-header">
+    <label class="item item-input" id="listarTodos-search1">
+    <i class="icon ion-android-add placeholder-icon"></i>
+      <input type="text"
+      placeholder="Agregar..."
+      ng-model="agregado"
+      my-enter="tipeado()"
+      id="inputAgregar"
+      ng-focus="cambio()" 
+      autofocus>
+    </label>
+  <div class="spacer" style="width: 10px; height: 10px;"></div>    
+  <ion-list>
+    <ion-item ng-repeat="nuevo in nuevos" class= "item item-icon-right">
+    <p><strong>Orden:</strong> {{nuevo.Aufnr}}</p> 
+    <p><strong>Operación:</strong> {{nuevo.Vornr}}</p>
+    <p><strong>Secuencia:</strong> {{nuevo.Aplfl}}</p>
+    <p><strong>Resultado:</strong> {{nuevo.Resultado}}</p>
+    <i class= {{nuevo.Icon}}></i>
+      <div ng-if="nuevo.Resultado == 'Error de conexión'"> 
+      <ion-option-button class="button-positive ion-paper-airplane"
+                             ng-click="reenviar(nuevo.Aufnr,nuevo.Vornr,nuevo.Aplfl,
+                             nuevo.Rueck,nuevo.Rmzhl,nuevo.Icon)">Reenviar
+      </ion-option-button>     
+      </div> 
+    </ion-item>
+  </ion-list>
+  <div growl ></div> 
+</ion-content>
+<div class="tabs tabs-icon-top">
+  <a class="tab-item" ng-click="verIngresados()">
+    <i class="icon ion-android-search"></i>
+    Ver Ingresados
+  </a>
+  <a class="tab-item" ng-click="scanCodigo()">
+    <i class="icon ion-camera"></i>
+    Escanear
+  </a>
+</div>
+</ion-view>
