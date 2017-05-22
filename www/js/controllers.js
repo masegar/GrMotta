@@ -292,8 +292,8 @@ angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
                   // $ionicListDelegate.closeOptionButtons(),
                   $scope.nuevos[inx].Resultado = "Enviada",
                   $scope.nuevos[inx].Icon      = "icon ion-paper-airplane",
-                  $growl.success("<b>Notificación</b> enviada"); 
-                   $ionicListDelegate.closeOptionButtons();
+                  $growl.success("<b>Notificación</b> enviada"), 
+                  $ionicListDelegate.closeOptionButtons();
                   return data;
                 })
                 .error(function(data, error, status, headers, config) {
@@ -301,9 +301,9 @@ angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
                   $ionicLoading.hide(),  
                   icono = "icon ion-close-circled",
                   // $ionicListDelegate.closeOptionButtons(),
-                  $growl.error("Error de conexión");  
-                   $ionicListDelegate.closeOptionButtons();
-                   return data;
+                  $growl.error("Error de conexión"),  
+                  $ionicListDelegate.closeOptionButtons();
+                  return data;
                 });
         }        
 
