@@ -1,5 +1,5 @@
 <ion-view title="Menú de Aplicaciones" id="page3" style="background-color:#034B3D;" hide-nav-bar="true" class="menu-background">
-<ion-content padding="true" class="has-header">
+<ion-content padding="true" class="has-footer">
 <!--  -->
 
 <!--  -->
@@ -68,10 +68,10 @@
               class="button button-light  button-full icon-left ion-log-out">Log Out</button>
     </div> -->
   </ion-content>
-<div class="tabs tabs-icon-top">
-  <a class="tab-item" ng-click="irLogOut()">
+  <ion-footer-bar style="padding:0;">
+    <button class="button button-full" ng-click="irLogOut()" style="margin: 0;">
     <i class="icon ion-log-out"></i>
     LOGOUT
-  </a>
-</div>  
+    </button>
+</ion-footer-bar>
 </ion-view>
