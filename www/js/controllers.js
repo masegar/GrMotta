@@ -1,9 +1,9 @@
 // import { LoadingController } from 'ionic-angular';
 angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
 
-.controller('ingresoCtrl', ['$scope', '$stateParams', '$http', '$base64', '$state', '$ionicLoading', 'growl', '$cordovaInAppBrowser',
+.controller('ingresoCtrl', ['$scope','$rootScope', '$stateParams', '$http', '$base64', '$state', '$ionicLoading', 'growl', '$cordovaInAppBrowser',
 
-    function($scope, $stateParams, $http, $base64, $state, $ionicLoading, $growl) {
+    function($scope, r,$stateParams, $http, $base64, $state, $ionicLoading, $growl) {
 
         $scope.login = function(usuario, contrasenia) {
 
