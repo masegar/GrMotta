@@ -145,9 +145,9 @@ angular.module('app.controllers', ['base64', 'ngCordova', 'angular-growl'])
         }
     ])
 
-.controller('fullordenesCtrl', ['$scope', '$stateParams', '$cordovaBarcodeScanner', '$http', '$timeout', '$state', 'shareData', '$ionicLoading', 'growl', '$ionicListDelegate',
+.controller('fullordenesCtrl', ['$scope', '$rootScope', '$stateParams', '$cordovaBarcodeScanner', '$http', '$timeout', '$state', 'shareData', '$ionicLoading', 'growl', '$ionicListDelegate',
 
-    function($scope, $stateParams, $cordovaBarcodeScanner, $http, $timeout, $state, shareData, $ionicLoading, $growl, $ionicListDelegate) {
+    function($scope, r, $stateParams, $cordovaBarcodeScanner, $http, $timeout, $state, shareData, $ionicLoading, $growl, $ionicListDelegate) {
 
         $scope.verIngresados = function() {
             $state.go("listarTodos");
