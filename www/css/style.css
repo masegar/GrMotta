@@ -97,7 +97,8 @@
     background-image: url('../img/JuDzU1QHSwKXvvPMyAYP_logo_Gmotta.jpg')
 }
 .menu-background {
-    background-image: url('../img/fondoMenu.png')
+    background-image: url('../img/fondoMenu.png');
+    background-size: cover;
 }
 
 /*BOTONES DE SEGUNDA PANTALLA*/
